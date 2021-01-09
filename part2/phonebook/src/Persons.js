@@ -7,7 +7,7 @@ const Persons = ({ persons, filterValue }) => {
         ? persons.map((person) => {
             return (
               <p key={person.id}>
-                {person.name} {person.phone}
+                {person.name} {person.number}
               </p>
             );
           })
@@ -15,7 +15,7 @@ const Persons = ({ persons, filterValue }) => {
             .filter((person) => person.name.toLowerCase().includes(filterValue))
             .map((el) => (
               <p key={el.id}>
-                {el.name} {el.phone}
+                {el.name} {el.number}
               </p>
             ))}
     </div>
