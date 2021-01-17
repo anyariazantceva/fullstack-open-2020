@@ -1,0 +1,12 @@
+import React from "react";
+
+const Filter = ({ value, handleChange }) => {
+  return (
+    <>
+      <label htmlFor="filter">Find countries</label>
+      <input type="text" id="filter" value={value} onChange={handleChange} />
+    </>
+  );
+};
+
+export default Filter;
