@@ -3,13 +3,13 @@ import Filter from "./Filter";
 import PersonForm from "./PersonForm";
 import Persons from "./Persons";
 import personsService from "./services/persons";
-import axios from "axios";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [filterValue, setFilterValue] = useState("");
+  const [message, setMessage] = "";
 
   useEffect(() => {
     personsService.getAll().then((initialPersons) => {
@@ -51,8 +51,12 @@ const App = () => {
     }
     personsService
       .create(newPerson)
-      .then((newPerson) => {
-        setPersons(persons.concat(newPerson));
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson));
+        setMessage(`New person ${returnedPerson.name} was added`);
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
       })
       .catch((error) => alert("Error!"));
 
@@ -94,6 +98,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div className="success-message">{message}</div>
       <Filter
         filterValue={filterValue}
         handleFilterChange={handleFilterChange}

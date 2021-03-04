@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.success-message {
+  background-color: forestgreen;
+  border: 2px solid greenyellow;
+  color: greenyellow;
+  padding: 20px;
+}
