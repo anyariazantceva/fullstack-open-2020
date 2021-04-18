@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const uniqueValidator = require("mongoose-unique-validator");
-const config = require("../utils/config");
-const logger = require("../utils/logger");
 
 const blogSchema = new Schema({
   title: { type: String, minlength: 4, required: true, unique: true },
@@ -18,7 +16,5 @@ blogSchema.set("toJSON", {
     delete returnedObject.__v;
   },
 });
-
-blogSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("Blog", blogSchema);
